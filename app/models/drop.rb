@@ -1,0 +1,2 @@
+class Drop < ApplicationRecord
+end
