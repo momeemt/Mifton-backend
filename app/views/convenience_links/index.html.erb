@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Convenience Links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Link</th>
+      <th>Is public</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @convenience_links.each do |convenience_link| %>
+      <tr>
+        <td><%= convenience_link.name %></td>
+        <td><%= convenience_link.description %></td>
+        <td><%= convenience_link.link %></td>
+        <td><%= convenience_link.is_public %></td>
+        <td><%= link_to 'Show', convenience_link %></td>
+        <td><%= link_to 'Edit', edit_convenience_link_path(convenience_link) %></td>
+        <td><%= link_to 'Destroy', convenience_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Convenience Link', new_convenience_link_path %>

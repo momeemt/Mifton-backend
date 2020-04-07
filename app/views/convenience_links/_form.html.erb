@@ -1,0 +1,37 @@
+<%= form_with(model: convenience_link, local: true) do |form| %>
+  <% if convenience_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(convenience_link.errors.count, "error") %> prohibited this convenience_link from being saved:</h2>
+
+      <ul>
+        <% convenience_link.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_area :link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_public %>
+    <%= form.text_field :is_public %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
