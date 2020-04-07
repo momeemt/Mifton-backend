@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# Database
+
+User {
+  bigint id,
+  string name,
+  string user_id
+}
