@@ -21,7 +21,15 @@ module Api::V1
 
     # GET /drops/1
     def show
-      render json: @drop
+      user = User.find(@drop.user_id)
+      result = {
+          "id" => @drop.id,
+          "content" => @drop.content,
+          "created_at" => @drop.created_at,
+          "updated_at" => @drop.updated_at,
+          "user" => user
+      }
+      render json: result
     end
 
     # POST /drops
