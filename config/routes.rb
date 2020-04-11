@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   namespace :api, format: 'json' do
     namespace :v1 do
+      get 'users/user_id/:id', to: 'users#acquisition_at_user_id'
       resources :users
       resources :drops
       resources :topics

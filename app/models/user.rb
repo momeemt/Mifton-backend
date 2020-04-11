@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  has_one :user_job
-  has_many :drops
-  has_many :convenience_links
+  has_one :user_job, dependent: :destroy
+  has_one :optional_user_datum, dependent: :destroy
+  has_many :drops, dependent: :destroy
+  has_many :convenience_links, dependent: :destroy
   has_one_attached :icon
   has_one_attached :header
   before_save { self.email = email.downcase }

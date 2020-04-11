@@ -14,9 +14,17 @@ module Api::V1
       render json: @user
     end
 
+    # GET /users/user_id/1
+    def acquisition_at_user_id
+      @user = User.find_by_user_id(params[:id])
+      render json: @user
+    end
+
     # POST /users
     def create
       @user = User.new(user_params)
+      @user.build_user_job
+      @user.build_optional_user_datum
 
       if @user.save
         render json: @user, status: :created
