@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   namespace :api, format: 'json' do
     namespace :v1 do
       get 'users/user_id/:id', to: 'users#acquisition_at_user_id'
+      get 'posts', to: 'posts#index'
       resources :users
       resources :drops
       resources :topics
       resources :sessions
       resources :news
       resources :convenience_links
+      resources :reports
+      resources :notifications
     end
   end
 end
