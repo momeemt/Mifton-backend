@@ -1,11 +1,11 @@
 module Api::V1
   class TopicsController < ApplicationController
-    before_action :set_drop, only: [:show, :update, :destroy]
+    before_action :set_topic, only: [:show, :update, :destroy]
 
     # GET /topics
     def index
-      @drops = Topic.all
-      render json: @drops
+      @topics = Topic.all
+      render json: @topics
     end
 
     # GET /topics/1
