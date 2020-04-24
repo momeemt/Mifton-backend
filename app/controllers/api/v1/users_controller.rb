@@ -30,9 +30,6 @@ module Api::V1
         render json: @user, status: :created
       else
         render json: @user.errors, status: :unprocessable_entity
-        @user.errors.full_messages.each do |e|
-          puts e
-        end
       end
     end
 
