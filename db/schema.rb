@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_095339) do
+ActiveRecord::Schema.define(version: 2020_04_16_001357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_04_10_095339) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "ignition_user_id"
+    t.string "service"
+    t.string "type"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "optional_user_data", force: :cascade do |t|
     t.bigint "user_id"
     t.text "profile"
@@ -71,6 +81,15 @@ ActiveRecord::Schema.define(version: 2020_04_10_095339) do
     t.string "lobi_id"
     t.string "github_id"
     t.string "discord_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "target_user_id"
+    t.integer "reports_type"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
