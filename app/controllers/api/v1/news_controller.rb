@@ -4,7 +4,7 @@ module Api::V1
 
     # GET /news
     def index
-      @news = Topic.all
+      @news = News.all
       render json: @news
     end
 
@@ -15,7 +15,7 @@ module Api::V1
 
     # POST /news
     def create
-      @news = Topic.new(news_params)
+      @news = News.new(news_params)
 
       if @news.save
         render json: @news, status: :created
@@ -41,7 +41,7 @@ module Api::V1
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_news
-      @news = Topic.find(params[:id])
+      @news = News.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
