@@ -1,3 +1,3 @@
 class NewsSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :title, :content
 end
