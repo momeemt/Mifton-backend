@@ -8,11 +8,11 @@ module Api::V1
       drops = Drop.all.order(created_at: :desc)
       drops.all.each do |drop|
         g_hash = {
-            "id" => drop.id,
-            "content" => drop.content,
-            "created_at" => drop.created_at,
-            "updated_at" => drop.updated_at,
-            "user" => User.find_by(id: drop.user_id)
+            :id => drop.id,
+            :content => drop.content,
+            :created_at => drop.created_at,
+            :updated_at => drop.updated_at,
+            :user => User.find_by(id: drop.user_id)
         }
         results.append(g_hash)
       end
@@ -23,11 +23,11 @@ module Api::V1
     def show
       user = User.find(@drop.user_id)
       result = {
-          "id" => @drop.id,
-          "content" => @drop.content,
-          "created_at" => @drop.created_at,
-          "updated_at" => @drop.updated_at,
-          "user" => user
+          :id => @drop.id,
+          :content => @drop.content,
+          :created_at => @drop.created_at,
+          :updated_at => @drop.updated_at,
+          :user => user
       }
       render json: result
     end
