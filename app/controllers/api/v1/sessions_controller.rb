@@ -4,6 +4,7 @@ module Api::V1
       user = User.find_by(user_id: params[:session][:user_id].downcase)
       if user && user.authenticate(params[:session][:password])
         log_in user
+        remember user
         render json: user, status: :created
       else
         render json: params, status: :unprocessable_entity
@@ -11,7 +12,7 @@ module Api::V1
     end
 
     def destroy
-      log_out
+      log_out if logged_in?
     end
   end
 end
