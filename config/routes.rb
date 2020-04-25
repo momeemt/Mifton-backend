@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :convenience_links
       resources :reports
       resources :notifications
+      resources :account_activations, only: [:edit]
     end
   end
 end
