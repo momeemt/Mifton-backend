@@ -27,6 +27,7 @@ module Api::V1
       @user.build_optional_user_datum
 
       if @user.save
+        log_in @user
         render json: @user, status: :created
       else
         render json: @user.errors, status: :unprocessable_entity
