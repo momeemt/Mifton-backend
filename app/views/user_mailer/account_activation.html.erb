@@ -1,5 +1,16 @@
-<h1>User#account_activation</h1>
+<h1>Miftonの世界まであと少しです</h1>
+
+<p>はじめまして、<%= @user.name %>さん！</p>
+<p>
+  Miftonの世界まであと少しです。下のリンクからアカウントを有効化してください。
+</p>
+
+<%= link_to "有効化する", edit_api_v1_account_activations_url(@user.activation_token, email: @user.email) %>
 
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/account_activation.html.erb
+  このメールに覚えがない場合は無視していただくようお願いします。
+</p>
+
+<p>
+  Mifton運営
 </p>
