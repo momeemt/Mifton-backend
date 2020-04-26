@@ -5,7 +5,7 @@
   Miftonの世界まであと少しです。下のリンクからアカウントを有効化してください。
 </p>
 
-<%= link_to "有効化する", edit_api_v1_account_activations_url(@user.activation_token, email: @user.email) %>
+<%= link_to "有効化する", edit_api_v1_account_activation_url(@user.activation_token, email: @user.email) %>
 
 <p>
   このメールに覚えがない場合は無視していただくようお願いします。

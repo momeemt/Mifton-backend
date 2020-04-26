@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'sessions/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   mount ActionCable.server => '/cable'
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
       resources :reports
       resources :notifications
       resources :account_activations, only: [:edit]
+      resources :password_resets, only: [:new, :create, :edit, :update]
     end
   end
 end
