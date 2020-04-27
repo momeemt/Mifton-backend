@@ -1,4 +1,4 @@
-module API::V1
+module Api::V1
   class AccountActivationsController < ApplicationController
     def edit
       user = User.find_by(email: params[:email])
@@ -7,7 +7,7 @@ module API::V1
         log_in user
         render json: user, status: 200
       else
-        render json: user.errors, status: :unprocessable_entity
+        render json: user, status: :unprocessable_entity
       end
     end
   end
