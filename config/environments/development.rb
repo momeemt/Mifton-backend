@@ -36,8 +36,9 @@ Rails.application.configure do
       host: host,
       protocol: 'http'
   }
-
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
+  config.action_mailer.default_url_options = { host: 'localhost:8080' }
+  config.action_mailer.delivery_method = :letter_opener_web
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
