@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_one :optional_user_datum, dependent: :destroy
   has_many :drops, dependent: :destroy
   has_many :topics, dependent: :destroy
-  has_many :convenience_links, dependent: :destroy
+  # has_many :convenience_links, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :reports
   has_one_attached :icon
@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
-    return false if remember_digest.nil?
+    return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
 
