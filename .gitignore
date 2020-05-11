@@ -27,3 +27,5 @@
 /config/master.key
 .env
 .DS_Store
+Project_Default.xml
+.idea
