@@ -1,4 +1,4 @@
-module API::V1
+module Api::V1
   class PasswordResetsController < ApplicationController
     before_action :get_user, only: [:edit, :update]
     before_action :valid_user, only: [:edit, :update]
