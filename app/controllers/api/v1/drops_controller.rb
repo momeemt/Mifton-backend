@@ -7,12 +7,27 @@ module Api::V1
       results = []
       drops = Drop.all.order(created_at: :desc)
       drops.all.each do |drop|
+        user = User.find_by(id: drop.user_id)
+        icon = user.icon_image
+        if icon.present?
+          user.icon_link = url_for(icon)
+        end
         g_hash = {
             :id => drop.id,
             :content => drop.content,
             :created_at => drop.created_at,
             :updated_at => drop.updated_at,
-            :user => User.find_by(id: drop.user_id)
+            :user => {
+                :id => user.id,
+                :user_id => user.user_id,
+                :name => user.name,
+                :email => user.email,
+                :password_digest => user.password_digest,
+                :created_at => user.created_at,
+                :icon_link => user.icon_link,
+            },
+            :user_id => drop.user_id,
+            :type => 'drop'
         }
         results.append(g_hash)
       end
@@ -37,7 +52,15 @@ module Api::V1
       @drop = Drop.new(drop_params)
 
       if @drop.save
-        render json: @drop, status: :created
+        @receive_drop = {
+            :id => @drop.id,
+            :content => @drop.content,
+            :created_at => @drop.created_at,
+            :updated_at => @drop.updated_at,
+            :user => User.find_by(id: @drop.user_id),
+            :type => 'drop'
+        }
+        render json: @receive_drop, status: :created
       else
         render json: @drop.errors, status: :unprocessable_entity
       end
