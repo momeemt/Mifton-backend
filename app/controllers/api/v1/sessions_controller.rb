@@ -6,6 +6,10 @@ module Api::V1
         if user.activated?
           log_in user
           params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+          icon = user.icon_image
+          if icon.present?
+            user.icon_link = url_for(icon)
+          end
           render json: user, status: :created
         else
           render json: params, status: 401 #認証されてない
