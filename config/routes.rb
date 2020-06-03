@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
-  get 'password_resets/new'
-  get 'password_resets/edit'
-  get 'sessions/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   mount ActionCable.server => '/cable'
   namespace :api, format: 'json' do
     namespace :v1 do
       get 'users/user_id/:id', to: 'users#acquisition_at_user_id'
       get 'posts', to: 'posts#index'
+      get 'sessions/new'
       resources :users
+      resources :users do
+        member do
+          get :following, :followers
+        end
+      end
+      resources :optional_user_data, only: [:show,:update]
       resources :drops
       resources :topics
       resources :sessions
